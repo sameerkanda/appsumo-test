@@ -1,0 +1,10 @@
+form(ng-submit="loginFormSubmit()")
+	h3 Admin Login
+	.form-group
+		label Username
+		input.form-control(type="text", ng-model="login.username")
+	.form-group
+		label Password
+		input.form-control(type="password", ng-model="login.password")
+	.form-group
+		input.btn.btn-block.btn-info(type="submit", value="Submit")

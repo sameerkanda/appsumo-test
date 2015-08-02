@@ -1,0 +1,10 @@
+form(ng-submit="createQuestionFormSubmit()")
+	h3 Create A Question
+	.form-group
+		label Question
+		input.form-control(type="text", ng-model="question.question")
+	.form-group(ng-repeat="(i, answer) in question.answers track by $index")
+		label Answer {{i + 1}}
+		input.form-control(type="text", ng-model="question.answers[i]")
+	.form-group
+		input.btn.btn-block.btn-info(type="submit", value="Submit")

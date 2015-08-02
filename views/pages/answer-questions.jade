@@ -1,0 +1,13 @@
+form(ng-submit="answerQuestionFormSubmit()")
+	h3 Answer Questions
+	.form-group
+		label Question
+		div {{question.question}}
+	.form-group
+		label Answers
+		.radio(ng-repeat="(i, answer) in question.Answers track by $index")
+			label
+				input(type='radio', name='answer', ng-model="$parent.userAnswer", ng-value='question.Answers[i].id')
+				| {{question.Answers[i].answer}}
+	.form-group
+		input.btn.btn-block.btn-info(type="submit", value="Submit")

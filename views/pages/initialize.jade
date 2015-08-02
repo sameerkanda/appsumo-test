@@ -1,0 +1,10 @@
+form(ng-submit="signupFormSubmit()")
+	h3 Initialize - Create An Admin Account
+	.form-group
+		label Admin Username
+		input.form-control(type="text", ng-model="signup.username")
+	.form-group
+		label Admin Password
+		input.form-control(type="password", ng-model="signup.password")
+	.form-group
+		input.btn.btn-block.btn-info(type="submit", value="Submit")

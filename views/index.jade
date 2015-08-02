@@ -1,0 +1,44 @@
+doctype html
+html
+	head
+		base(href="/")
+		title AppSumo Test
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+		meta(name="HandheldFriendly", content="true")
+		link(rel="stylesheet", type="text/css", href="/css/style.min.css")
+	body(ng-app="appSumo", ng-class="'page-' + template")
+		nav.navbar.navbar-inverse.navbar-fixed-top
+			.container
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') AppSumo Test
+				#navbar.collapse.navbar-collapse
+					ul.nav.navbar-nav(ng-hide="template == 'initialize'")
+						li(ng-class="{active:(template == 'answer-questions')}")
+							a(ng-href='/') Answer Questions
+						li(ng-show="!user.isAdmin", ng-class="{active:(template == 'admin-login')}")
+							a(ng-href='/admin-login') Admin Login
+						li(ng-show="user.isAdmin", ng-class="{active:(template == 'create-questions')}")
+							a(ng-href='/create-questions') Create Questions
+						li(ng-show="user.isAdmin", ng-class="{active:(template == 'analytics')}")
+							a(ng-href='/analytics') Analytics
+						li(ng-show="user.isAdmin")
+							a(ng-click="logout()") Logout
+		.container(ng-view)
+		//-preload all templates for angularjs here
+		script(type='text/ng-template', id='initialize')
+			include ./pages/initialize.jade
+		script(type='text/ng-template', id='answer-questions')
+			include ./pages/answer-questions.jade
+		script(type='text/ng-template', id='admin-login')
+			include ./pages/admin-login.jade
+		script(type='text/ng-template', id='create-questions')
+			include ./pages/create-questions.jade
+		script(type='text/ng-template', id='analytics')
+			include ./pages/analytics.jade
+		//-load javascript at the end
+		script(type='text/javascript', src="/js/script.min.js")
